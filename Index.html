@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Inicio</title>
+</head>
+<body>
+    <div id="app">
+        <h1 v-html="titulo"></h1>
+        <Cantantes></Cantantes>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="Componentes/Cantante.js"></script>
+    <script src="Componentes/Cantantes.js"></script>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+
+            data() {
+                return {
+                    titulo: 'Mi web de<strong> Cantantes </strong>'
+                }
+            },
+            components: {
+                Cantantes
+            }
+
+        })
+    </script>
+</body>
+</html>

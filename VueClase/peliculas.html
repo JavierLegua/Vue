@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto de Peliculas</title>
+</head>
+<body>
+    <div id="app">
+        <h1 v-html="titulo"></h1>
+        <peliculas></peliculas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="ComponentesPeliculas/Pelicula.js"></script>
+    <script src="ComponentesPeliculas/Peliculas.js"></script>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+
+            data() {
+                return {
+                    titulo: 'Mi web de<strong> Peliculas </strong>'
+                }
+            },
+            components: {
+                Peliculas
+            }
+
+        })
+    </script>
+</body>
+</html> 
