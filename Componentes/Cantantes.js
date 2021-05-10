@@ -2,21 +2,29 @@
 
 let Cantantes = {
     template: `
-        <p>hola</p>
+        <div>
+        <div v-for="(hit, index) in hits" :key="index">
+        <h2>{{ hit.result.title }}</h2>
+        <img :src="hit.result.header_image_url" width=300px></img>
+        
+        
+        </div>
+        </div>
         `,
         
 
         data(){
             return{
                 titulo:'Cantantes',
+                hits: [],
             }
         },
         components:{
-  //          Cantante
+           Cantante
         },
         methods:{
             getCantantes(){
-                fetch("https://genius.p.rapidapi.com/search?q=fernando%20costa", {
+                fetch("https://genius.p.rapidapi.com/search?q=lil%20peep", {
 	            "method": "GET",
 	            "headers": {
 	        	"x-rapidapi-key": "24ac918ccamshdd8ce0d31207769p19ffa8jsn601d3a5fb311",
@@ -25,8 +33,8 @@ let Cantantes = {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    this.cantantes = data.response   
-                    console.log(data.response)
+                    this.hits = data.response.hits   
+                    console.log(data.response.hits)
                 })
                 .catch(err => {
 	            console.error(err);
