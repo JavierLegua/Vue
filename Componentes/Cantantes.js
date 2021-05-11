@@ -1,14 +1,18 @@
-
-
 let Cantantes = {
     template: `
         <div>
-        <div v-for="(hit, index) in hits" :key="index">
-        <h2>{{ hit.result.title }}</h2>
-        <img :src="hit.result.header_image_url" width=300px></img>
-        
-        
-        </div>
+            <input v-model="busqueda">
+            <button @click="getCantantes">Buscar</button>
+            <span v-if="hits[0]">
+            <br><br>
+            <h2>Top 10 canciones de {{hits[0].result.primary_artist.name}}</h2>
+            <img :src="hits[0].result.primary_artist.image_url" width=300px></img>
+            </span>
+            <div v-for="(hit, index) in hits" :key="index">
+                <h3>{{ hit.result.title }}</h3>
+                <img :src="hit.result.header_image_url" width=250px></img>
+                
+            </div>
         </div>
         `,
         
@@ -17,6 +21,7 @@ let Cantantes = {
             return{
                 titulo:'Cantantes',
                 hits: [],
+                busqueda: ''
             }
         },
         components:{
@@ -24,7 +29,7 @@ let Cantantes = {
         },
         methods:{
             getCantantes(){
-                fetch("https://genius.p.rapidapi.com/search?q=lil%20peep", {
+                fetch(`https://genius.p.rapidapi.com/search?q=${this.busqueda}`, {
 	            "method": "GET",
 	            "headers": {
 	        	"x-rapidapi-key": "24ac918ccamshdd8ce0d31207769p19ffa8jsn601d3a5fb311",
@@ -42,7 +47,7 @@ let Cantantes = {
             }
         },
         mounted(){
-            this.getCantantes()
+  //          this.getCantantes()
         },
 }
 
