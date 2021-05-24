@@ -1,15 +1,20 @@
 let Cantantes = {
     template: `
         <div>
-            <input v-model="busqueda">
+            <p>Introduce el nombre del cantante o grupo que desea buscar :)</p>
+            <p>Toda la informacion es otorgada por <a href="https://genius.com/" target="_blank">Genius</a></p>
+            <input v-model="busqueda" @keydown.enter="getCantantes">
             <button @click="getCantantes">Buscar</button>
             <span v-if="hits[0]">
             <br><br>
+            <a :href="hits[0].result.primary_artist.url" target="_blank">Información de {{hits[0].result.primary_artist.name}}</a>
             <h2>Top 10 canciones de {{hits[0].result.primary_artist.name}}</h2>
             <img :src="hits[0].result.primary_artist.image_url" width=300px></img>
             </span>
             <div v-for="(hit, index) in hits" :key="index">
                 <h3>{{ hit.result.title }}</h3>
+                <a :href="hit.result.url" target="_blank">Letra de {{ hit.result.title }}</a>
+                <br><br>
                 <img :src="hit.result.header_image_url" width=250px></img>
                 
             </div>
