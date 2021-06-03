@@ -8,10 +8,10 @@ let Cantante = {
         </div>
     `,
 
-    props:['header_image_url', 'title'],
+    props: ['header_image_url', 'title'],
 
-    data(){
-        return{
+    data() {
+        return {
 
         }
     },
