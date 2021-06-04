@@ -19,32 +19,32 @@ let Cantantes = {
                 
             <div v-if="menu==2">
                 <br>
-                <h2 v-if="hits[0]">Estas buscando informacion de {{hits[0].result.primary_artist.name}}</h2>
+                <h2 v-if="hits[0]">Estas buscando información de {{hits[0].result.primary_artist.name}}</h2>
             </div>
 
             <div v-if="menu==3">
                 <br>
-                <h2 v-if="hits[0]">Estas buscando informacion de {{hits[0].result.primary_artist.name}}</h2>
+                <h2 v-if="hits[0]">Estas buscando información de {{hits[0].result.primary_artist.name}}</h2>
             </div>
 
             <div v-if="menu==4">
                 <br>
-                <h2 v-if="hits[0]">Estas buscando informacion de {{hits[0].result.primary_artist.name}}</h2>
+                <h2 v-if="hits[0]">Estas buscando información de {{hits[0].result.primary_artist.name}}</h2>
             </div>
 
             <span v-if="hits[0]">
-                <br><br>
-                <a :href="hits[0].result.primary_artist.url" target="_blank">Información de {{hits[0].result.primary_artist.name}}</a>
+                <br>
+                <strong><a :href="hits[0].result.primary_artist.url" target="_blank">Información de {{hits[0].result.primary_artist.name}}</a></strong>
                 <h2>Top 10 canciones de {{hits[0].result.primary_artist.name}}</h2>
                 <img :src="hits[0].result.primary_artist.image_url" width=300px></img>
             </span>
                 
-                <div v-for="(hit, index) in hits" :key="index">
-                    <h3>{{ hit.result.title }}</h3>
-                    <a :href="hit.result.url" target="_blank">Letra de {{ hit.result.title }}</a>
-                    <br><br>
-                    <img :src="hit.result.header_image_url" width=250px></img>
-                </div>
+            <div v-for="(hit, index) in hits" :key="index">
+                <h3>{{ hit.result.title }}</h3>
+                <a :href="hit.result.url" target="_blank">Lyrics de {{ hit.result.title }}</a>
+                <br><br>
+                <img :src="hit.result.header_image_url" width=250px></img>
+            </div>
 
             
         </div>
